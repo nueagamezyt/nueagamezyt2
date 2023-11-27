@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUEA MUSIC</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/wavesurfer.js@7"></script>
+</head>
+<body>
+    <div class="hero">
+        <div class="music">
+            <p>Artist: Fukkling Hero ft. Lazyloxy and Og-Anic</p>
+            <h1>มีเเค่เรา</h1>
+            <div class="track">
+                <img src="nuea music/play.png" id="playBtn">
+                <div id="waveform"></div>
+            </div>
+        </div>  
+    </div>
+
+    <script>
+       var playBtn =document.getElementById("playBtn");
+       
+       var wavesurfer = WaveSurfer.create({
+              container: '#waveform',
+              waveColor: '#ddd',
+              progressColor: '#ff006c',
+              barWidth: 4,
+              responsive: true,
+              height: 90,
+              barRadius: 4
+    });
+
+    wavesurfer.load('nuea music/F.HERO Ft. LAZYLOXY & OG-ANIC (Prod. By NINO) - มแคเรา [Official MV].mp3');
+    
+    playBtn.onclick = function(){
+        wavesurfer.playPause();
+        if(playBtn.src.includes("play.png")){
+            playBtn.src = "nuea music/pause.png";
+        }else{
+            playBtn.src = "nuea music/play.png";
+        }
+    }
+
+    wavesurfer.on('finish',function(){
+        playBtn.src = "nuea music/play.png";
+        wavesurfer.stop();
+    })
+
+    </script>
+
+</body>
+
+</html>
